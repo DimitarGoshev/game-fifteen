@@ -7,8 +7,8 @@ namespace GameFifteen
 {
     public class Player
     {
-        public string Name { get; private set; }
-        public int Score { get; private set; }
+        public string Name { get; set; }
+        public int Score { get; set; }
 
         public Player(string name, int score)
         {

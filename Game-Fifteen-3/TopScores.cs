@@ -7,10 +7,9 @@ namespace GameFifteen
 {
    public class TopScores
    {
+       public static readonly int TOP_SCORES_SIZE = 5;
+
        //this is the top score table
-      public static int[] hodove = new int[5];
-      public static string[] igrachi = new string[5];
-      
-      
+       public static Player[] TopPlayers = new Player[TOP_SCORES_SIZE];
    }
 }
