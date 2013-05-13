@@ -6,65 +6,19 @@ namespace GameFifteen
 {
     public class GameFifteen
     {
-<<<<<<< HEAD
         private const int BoardSize = 4;
-        private const string WhiteSpace = " ";
         private string[,] matrix;
+        private const string EmptyCell = " ";
         private int moveCount;
 
-        public void StartGame()
-        {
-            this.matrix = new string[BoardSize, BoardSize];
-            this.moveCount = 0;
-
-            Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
-                "sequentially." + Environment.NewLine + "Use 'top' to view the top scoreboard, 'restart' to start a new " +
-                "game and 'exit'" + Environment.NewLine + "to quit the game." + Environment.NewLine);
-
-            this.GenerateMatrix();
-            this.DrawMatrix();
-
-            while (!this.IsGameFinished())
-            {
-                Console.Write("Enter a number to move : ");
-                string input = Console.ReadLine();
-
-                this.ParseInput(input);
-            }
-
-            Console.WriteLine("Your result is {0} moves !", this.moveCount);
-
-            for (int i = 0; i < TopScores.TopScoresSize; i++)
-            {
-                if (TopScores.TopPlayers[i].Score > this.moveCount)
-                {
-                    Console.WriteLine("Congratulations, you have just putted a new record");
-                    Console.Write("Please enter your name : ");
-                    TopScores.TopPlayers[i].Score = this.moveCount;
-                    TopScores.TopPlayers[i].Name = Console.ReadLine();
-                }
-            }
-        }
-=======
-        private const int BOARD_SIZE = 4;
-        private string[,] matrix;
-        private int moveCount;
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
-        
         private void GenerateMatrix()
         {
             Random random = new Random();
             List<int> usedNumbers = new List<int>();
             bool isFilled = false;
-<<<<<<< HEAD
             int row = random.Next(BoardSize);
             int col = random.Next(BoardSize);
-            this.matrix[row, col] = WhiteSpace;
-=======
-            int row = random.Next(BOARD_SIZE);
-            int col = random.Next(BOARD_SIZE);
-            this.matrix[row, col] = " ";
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
+            this.matrix[row, col] = EmptyCell;
 
             for (int i = 0; i < BoardSize; i++)
             {
@@ -74,11 +28,7 @@ namespace GameFifteen
 
                     do
                     {
-<<<<<<< HEAD
-                        if (this.matrix[i, j] == WhiteSpace)
-=======
-                        if (this.matrix[i, j] == " ")
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
+                        if (this.matrix[i, j] == EmptyCell)
                         {
                             isFilled = true;
                         }
@@ -135,11 +85,7 @@ namespace GameFifteen
                 {
                     if (this.matrix[i, j] != counter.ToString())
                     {
-<<<<<<< HEAD
-                        if (counter == 15 && this.matrix[i, j] == WhiteSpace)
-=======
-                        if (counter == 15 && this.matrix[i, j] == " ")
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
+                        if (counter == 15 && this.matrix[i, j] == EmptyCell)
                         {
                             return true;
                         }
@@ -158,11 +104,7 @@ namespace GameFifteen
 
         private Position GetPosition(string input)
         {
-<<<<<<< HEAD
             for (int i = 0; i < BoardSize; i++)
-=======
-            for (int i = 0; i < BOARD_SIZE; i++)
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
             {
                 for (int j = 0; j < BoardSize; j++)
                 {
@@ -177,23 +119,49 @@ namespace GameFifteen
             return null;
         }
 
-<<<<<<< HEAD
+        public void StartGame()
+        {
+            this.matrix = new string[BoardSize, BoardSize];
+           this.moveCount = 0;
+
+            Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
+                "sequentially .\nUse 'top' to view the top scoreboard, 'restart' to start a new " +
+                "game and 'exit' \nto quit the game.\n\n\n");
+
+            this.GenerateMatrix();
+            this.DrawMatrix();
+
+            while (!this.IsGameFinished())
+            {
+                Console.Write("Enter a number to move : ");
+                string input = Console.ReadLine();
+
+                this.ParseInput(input);
+            }
+
+            Console.WriteLine("Your result is {0} moves !", this.moveCount);
+
+            for (int i = 0; i < TopScores.TopScoresSize; i++)
+            {
+                if (TopScores.TopPlayers[i].Score > this.moveCount)
+                {
+                    Console.WriteLine("Congratulations, you have just putted a new record");
+                    Console.Write("Please enter your name : ");
+                    TopScores.TopPlayers[i].Score = this.moveCount;
+                    TopScores.TopPlayers[i].Name = Console.ReadLine();
+                }
+            }
+        }
+
         private void ParseInput(string input)
         {
             bool isMoveValid = false;
-=======
-        public void StartGame()
-        {
-            this.matrix = new string[BOARD_SIZE, BOARD_SIZE];
-            moveCount = 0;
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
 
             if (input == "exit")
             {
                 Console.WriteLine("Good bye !");
             }
 
-<<<<<<< HEAD
             if (input == "restart")
             {
                 this.RestartGame();
@@ -225,15 +193,15 @@ namespace GameFifteen
 
         private void MoveInDirection(Position oldPosition, MoveDirection direction)
         {
+            Position newPosition = this.CalculatePositionWithDirection(oldPosition, 
+                direction);
 
-            Position newPosition = this.CalculatePositionWithDirection(oldPosition, direction);
-
-            if (this.matrix[newPosition.Row, newPosition.Column] == WhiteSpace)
+            if (this.matrix[newPosition.Row, newPosition.Column] == EmptyCell)
             {
                 string itemToMove = this.matrix[oldPosition.Row, oldPosition.Column];
                 this.matrix[newPosition.Row, newPosition.Column] = itemToMove;
-                this.matrix[oldPosition.Row, oldPosition.Column] = WhiteSpace;
-                DrawMatrix();
+                this.matrix[oldPosition.Row, oldPosition.Column] = EmptyCell;
+                this.DrawMatrix();
             }
         }
 
@@ -274,7 +242,7 @@ namespace GameFifteen
             }
 
             Position newPosition = this.CalculatePositionWithDirection(position, direction);
-            if (this.matrix[newPosition.Row, newPosition.Column] != WhiteSpace)
+            if (this.matrix[newPosition.Row, newPosition.Column] != EmptyCell)
             {
                 return false;
             }
@@ -282,7 +250,8 @@ namespace GameFifteen
             return true;
         }
 
-        private Position CalculatePositionWithDirection(Position position, MoveDirection direction)
+        private Position CalculatePositionWithDirection(Position position,
+            MoveDirection direction)
         {
             Position newPosition = (Position)position.Clone();
 
@@ -307,7 +276,7 @@ namespace GameFifteen
 
         private void RestartGame()
         {
-            Console.WriteLine("Here is your new this.matrix, have a good play : " + Environment.NewLine);
+            Console.WriteLine("Here is your new this.matrix, have a good play : \n\n\n");
             this.matrix = new string[BoardSize, BoardSize];
             this.GenerateMatrix();
             this.DrawMatrix();
@@ -318,174 +287,7 @@ namespace GameFifteen
         {
             for (int i = 0; i < TopScores.TopScoresSize; i++)
             {
-                Console.WriteLine(
-                    "Name : {0} , moveCount : {1} ",
-=======
-            GenerateMatrix();
-            DrawMatrix();
-
-            while (!IsGameFinished())
-            {
-                Console.Write("Enter a number to move : ");
-                string input = Console.ReadLine();
-
-                ParseInput(input);
-            }
-
-            Console.WriteLine("Your result is {0} moves !", moveCount);
-
-            for (int i = 0; i < TopScores.TOP_SCORES_SIZE; i++)
-            {
-                if (TopScores.TopPlayers[i].Score > moveCount)
-                {
-                    Console.WriteLine("Congratulations, you have just putted a new record");
-                    Console.Write("Please enter your name : ");
-                    TopScores.TopPlayers[i].Score = moveCount;
-                    TopScores.TopPlayers[i].Name = Console.ReadLine();
-                }
-            }
-        }
-
-        private void ParseInput(string input)
-        {
-            bool isMoveValid = false;
-
-            if (input == "exit")
-            {
-                Console.WriteLine("Good bye !");
-            }
-
-            if (input == "restart")
-            {
-                RestartGame();
-                return;
-            }
-
-            if (input == "top")
-            {
-                PrintTopScores();
-                return;
-            }
-
-            Position currentPosition = GetPosition(input);
-            if (currentPosition == null)
-            {
-                return;
-            }
-
-            TryMovingInDirection(ref isMoveValid, currentPosition,
-                MoveDirection.Up);
-            TryMovingInDirection(ref isMoveValid, currentPosition,
-                MoveDirection.Down);
-            TryMovingInDirection(ref isMoveValid, currentPosition,
-                MoveDirection.Left);
-            TryMovingInDirection(ref isMoveValid, currentPosition,
-                MoveDirection.Right);
-
-            if (!isMoveValid)
-            {
-                Console.WriteLine("Illegal move!");
-            }
-        }
-
-        private void MoveInDirection(Position oldPosition, MoveDirection direction)
-        {
-            Position newPosition = CalculatePositionWithDirection(oldPosition,
-                direction);
-
-            if (this.matrix[newPosition.Row, newPosition.Column] == " ")
-            {
-                string itemToMove = this.matrix[oldPosition.Row, oldPosition.Column];
-                this.matrix[newPosition.Row, newPosition.Column] = itemToMove;
-                this.matrix[oldPosition.Row, oldPosition.Column] = " ";
-                DrawMatrix();
-            }
-        }
-
-        private void TryMovingInDirection(ref bool isMoveValid, Position currentPosition, 
-            MoveDirection direction)
-        {
-            if(CanMoveInDirection(currentPosition, direction))
-            {
-                MoveInDirection(currentPosition, direction);
-                isMoveValid = true;
-                moveCount++;
-            }
-        }
-
-        private bool CanMoveInDirection(Position position, MoveDirection direction)
-        {
-            if (direction == MoveDirection.Up &&
-                position.Row <= 0)
-            {
-                return false;
-            }
-
-            if (direction == MoveDirection.Down &&
-                position.Row >= BOARD_SIZE - 1)
-            {
-                return false;
-            }
-
-            if (direction == MoveDirection.Left &&
-                position.Column <= 0)
-            {
-                return false;
-            }
-
-            if (direction == MoveDirection.Right &&
-                position.Column >= BOARD_SIZE - 1)
-            {
-                return false;
-            }
-
-            Position newPosition = CalculatePositionWithDirection(position, direction);
-            if (this.matrix[newPosition.Row, newPosition.Column] != " ")
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private Position CalculatePositionWithDirection(Position position, 
-            MoveDirection direction)
-        {
-            Position newPosition = (Position)position.Clone();
-
-            switch (direction)
-            {
-                case MoveDirection.Down:
-                    newPosition.Row++;
-                    break;
-                case MoveDirection.Left:
-                    newPosition.Column--;
-                    break;
-                case MoveDirection.Right:
-                    newPosition.Column++;
-                    break;
-                case MoveDirection.Up:
-                    newPosition.Row--;
-                    break;
-            }
-            return newPosition;
-        }
-
-        private void RestartGame()
-        {
-            Console.WriteLine("Here is your new this.matrix, have a good play : \n\n\n");
-            this.matrix = new string[BOARD_SIZE, BOARD_SIZE];
-            GenerateMatrix();
-            DrawMatrix();
-            moveCount = 0;
-        }
-
-        private void PrintTopScores()
-        {
-            for (int i = 0; i < TopScores.TOP_SCORES_SIZE; i++)
-            {
                 Console.WriteLine("Name : {0} , moveCount : {1} ",
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
                     TopScores.TopPlayers[i].Name,
                     TopScores.TopPlayers[i].Score);
             }
