@@ -28,8 +28,28 @@ namespace GameFifteen
         public void StartGame()
         {
             this.field = new GameField(BOARD_SIZE, BOARD_SIZE);
+
+            // Test TopScore
+            //int cnt = 1;
+            //for (int row = 0; row < 4; row++)
+            //{
+            //    for (int col = 0; col < 4; col++)
+            //    {
+            //        if (cnt != 16)
+            //        {
+            //            field[row, col] = cnt + "";
+
+            //        }
+            //        else
+            //        {
+            //            field[row, col] = " ";
+            //        }
+            //        cnt++;
+            //    }
+            //}
+
             this.moveCount = 0;
-            this.field.GenerateField();
+            // this.field.GenerateField();
             this.isGameRunning = true;
 
             Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
@@ -46,12 +66,13 @@ namespace GameFifteen
                 Console.Write("Enter a number to move [1..15]: ");
                 string input = Console.ReadLine();
                 this.ParseInput(input);
-            }
 
-            if (isGameWon)
-            {
-                Console.WriteLine("You solved the game in {0} moves!", this.moveCount);
-                this.CheckTopScore();
+                if (isGameWon)
+                {
+                    Console.WriteLine("You solved the game in {0} moves!", this.moveCount);
+                    this.CheckTopScore();
+                    this.StopGame();
+                }
             }
         }
 
@@ -328,28 +349,24 @@ namespace GameFifteen
         {
             Console.WriteLine("Game Over!");
 
-            if (isGameWon)
+            while (isGameWon)
             {
                 Console.Write("Start Another Game? (Y/N): ");
-                while (isGameRunning)
-                {
-                    string userInput = Console.ReadLine();
+                string userInput = Console.ReadLine();
 
-                    if (userInput.Equals("Y"))
-                    {
-                        this.RestartGame();
-                        break;
-                    }
-                    else if (userInput.Equals("N"))
-                    {
-                        this.isGameRunning = false;
-                    }
+                if (userInput.Equals("Y"))
+                {
+                    this.RestartGame();
+                    this.isGameRunning = true;
+                    this.isGameWon = false;
+                    return;
+                }
+                else if (userInput.Equals("N"))
+                {
+                    this.isGameWon = false;
                 }
             }
-            else
-            {
-                this.isGameRunning = false;
-            }
+            this.isGameRunning = false;
         }
     }
 }
