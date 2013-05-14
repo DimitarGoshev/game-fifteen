@@ -5,10 +5,15 @@ namespace GameFifteen
 {
     public class Player
     {
+        public Player(int score)
+        {
+            this.Score = score;
+        }
+
         public Player(string name, int score)
+            : this(score)
         {
             this.Name = name;
-            this.Score = score;
         }
 
         public string Name { get; set; }

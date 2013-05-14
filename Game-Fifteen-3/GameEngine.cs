@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace GameFifteen
 {
@@ -9,54 +8,76 @@ namespace GameFifteen
         private const string EmptyCell = " ";
         private int moveCount;
         private const int BoardSize = 4;
+        private bool gameRunning = false;
+        private bool gameWon = false;
 
         public void StartGame()
         {
-
             field = new GameField(BoardSize, BoardSize);
             this.moveCount = 0;
+            field.GenerateField();
+            this.gameRunning = true;
 
             Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
                 "sequentially .\nUse 'top' to view the top scoreboard, 'restart' to start a new " +
                 "game and 'exit' \nto quit the game.\n\n\n");
 
-            field.GenerateField();
             Console.Write(field.ToString());
 
-            while (!this.IsGameFinished())
+            while (gameRunning)
             {
-                Console.Write("Enter a number to move : ");
+                gameRunning = !IsGameFinished();
+                Console.Write("Enter a number to move [1..15]: ");
                 string input = Console.ReadLine();
-
                 this.ParseInput(input);
             }
 
-            Console.WriteLine("Your result is {0} moves !", this.moveCount);
-
-            for (int i = 0; i < TopScores.TopScoresSize; i++)
+            if (gameWon)
             {
-                if (TopScores.TopPlayers[i].Score > this.moveCount)
+                Console.WriteLine("You solved the game in {0} moves!", this.moveCount);
+                this.CheckTopScore();
+            }
+        }
+
+        private void CheckTopScore()
+        {
+            int topPlayersSize = TopScores.SCORE_LIST_SIZE < TopScores.TopPlayers.Count ? TopScores.SCORE_LIST_SIZE : TopScores.TopPlayers.Count;
+
+            if (TopScores.TopPlayers.Count == 0)
+            {
+                this.AddToTopScore(new Player(this.moveCount), 0);
+            }
+            else
+            {
+                for (int i = 0; i < topPlayersSize; i++)
                 {
-                    Console.WriteLine("Congratulations, you have just set a new record");
-                    Console.Write("Please enter your name : ");
-                    TopScores.TopPlayers[i].Score = this.moveCount;
-                    TopScores.TopPlayers[i].Name = Console.ReadLine();
+                    if (this.moveCount > TopScores.TopPlayers[i].Score)
+                    {
+                        this.AddToTopScore(new Player(this.moveCount), i);
+                    }
                 }
             }
+        }
+        private void AddToTopScore(Player player, int position)
+        {
+            Console.WriteLine("Congratulations, you have just set a new record!");
+            Console.Write("Please enter your name : ");
+            player.Name = Console.ReadLine();
         }
 
         private bool IsGameFinished()
         {
             int counter = 1;
 
-            for (int i = 0; i < BoardSize; i++)
+            for (int row = 0; row < BoardSize; row++)
             {
-                for (int j = 0; j < BoardSize; j++)
+                for (int col = 0; col < BoardSize; col++)
                 {
-                    if (this.field[i, j] != counter.ToString())
+                    if (this.field[row, col] != counter.ToString())
                     {
-                        if (counter == 15 && this.field[i, j] == EmptyCell)
+                        if (counter == 15 && this.field[row, col] == EmptyCell)
                         {
+                            gameWon = true;
                             return true;
                         }
                         else
@@ -72,32 +93,13 @@ namespace GameFifteen
             return true;
         }
 
-        private Position GetPosition(string input)
-        {
-            for (int i = 0; i < BoardSize; i++)
-            {
-                for (int j = 0; j < BoardSize; j++)
-                {
-                    if (this.field[i, j] == input)
-                    {
-                        return new Position(i, j);
-                    }
-                }
-            }
-
-            Console.WriteLine("Cheat ! Illegal command ! !");
-            return null;
-        }
-
-
-
         private void ParseInput(string input)
         {
             bool isMoveValid = false;
 
             if (input == "exit")
             {
-                Console.WriteLine("Good bye !");
+                this.StopGame();
             }
 
             if (input == "restart")
@@ -112,9 +114,10 @@ namespace GameFifteen
                 return;
             }
 
-            Position currentPosition = this.GetPosition(input);
+            Position currentPosition = field.GetPosition(input);
             if (currentPosition == null)
             {
+                isMoveValid = false;
                 return;
             }
 
@@ -125,7 +128,7 @@ namespace GameFifteen
 
             if (!isMoveValid)
             {
-                Console.WriteLine("Illegal move!");
+                Console.WriteLine("That number can't be moved!");
             }
         }
 
@@ -214,11 +217,40 @@ namespace GameFifteen
 
         private void RestartGame()
         {
-            Console.WriteLine("Here is your new this.matrix, have a good play : \n\n\n");
+            Console.WriteLine("Game restarted. Generating new table...");
             this.field = new GameField(BoardSize, BoardSize);
             field.GenerateField();
+            Console.WriteLine("Done!");
             Console.Write(field.ToString());
             this.moveCount = 0;
+        }
+
+        private void StopGame()
+        {
+            Console.WriteLine("Game Over!");
+
+            if (gameWon)
+            {
+                Console.Write("Start Another Game? (Y/N): ");
+                while (gameRunning)
+                {
+                    string userInput = Console.ReadLine();
+
+                    if (userInput.Equals("Y"))
+                    {
+                        this.RestartGame();
+                        break;
+                    }
+                    else if (userInput.Equals("N"))
+                    {
+                        this.gameRunning = false;
+                    }
+                }
+            }
+            else
+            {
+                this.gameRunning = false;
+            }
         }
     }
 }

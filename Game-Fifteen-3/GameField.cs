@@ -1,107 +1,103 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace GameFifteen
 {
     class GameField
     {
-        private int rows;
-        private int cols;
-        private string[,] matrix;
+        private int tableRows;
+        private int tableCols;
+        private string[,] table;
         private const string EmptyCell = " ";
 
-        //Create field.
         public GameField(int rows, int cols)
         {
-            matrix = new string[rows, cols];
-            this.rows = rows;
-            this.cols = cols;
+            table = new string[rows, cols];
+            this.tableRows = rows;
+            this.tableCols = cols;
         }
 
-        // Get/Set
         public string this[int rows, int cols]
         {
-            get { return matrix[rows, cols]; }
-            set { matrix[rows, cols] = value; }
+            get { return table[rows, cols]; }
+            set { table[rows, cols] = value; }
         }
 
         public void GenerateField()
         {
-            Random random = new Random();
+            Random randomNumbers = new Random();
             List<int> usedNumbers = new List<int>();
-            bool isFilled = false;
-            int row = random.Next(rows);
-            int col = random.Next(cols);
-            this[row, col] = EmptyCell;
+            bool isTableFilled = false;
+            int randomRow = randomNumbers.Next(tableRows);
+            int randomCol = randomNumbers.Next(tableCols);
+            this[randomRow, randomCol] = EmptyCell;
 
-            for (int i = 0; i < rows; i++)
+            for (int row = 0; row < tableRows; row++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int col = 0; col < tableCols; col++)
                 {
-                    isFilled = false;
+                    isTableFilled = false;
                     do
                     {
-                        if (this[i, j] == EmptyCell)
+                        if (this[row, col] == EmptyCell)
                         {
-                            isFilled = true;
+                            isTableFilled = true;
                         }
 
-                        int number = random.Next(1, 16);
-                        if (this[i, j] == null)
+                        int number = randomNumbers.Next(1, 16);
+                        if (this[row, col] == null)
                         {
                             if (!usedNumbers.Contains(number))
                             {
-                                this[i, j] = number.ToString();
-                                isFilled = true;
+                                this[row, col] = number.ToString();
+                                isTableFilled = true;
                                 usedNumbers.Add(number);
                             }
                         }
                     }
-                    while (isFilled == false);
+                    while (isTableFilled == false);
                 }
             }
         }
 
-        //Overload ToString()
-        //public override string ToString()
-        //{
-        //    StringBuilder builder = new StringBuilder();
+        public Position GetPosition(string input)
+        {
+            for (int row = 0; row < tableRows; row++)
+            {
+                for (int col = 0; col < tableCols; col++)
+                {
+                    if (this[row, col] == input)
+                    {
+                        return new Position(row, col);
+                    }
+                }
+            }
 
-        //    for (int rows = 0; rows < this.rows; rows++)
-        //    {
-        //        for (int cols = 0; cols < this.cols; cols++)
-        //        {
-        //            builder.AppendFormat("{0,4}", this[rows, cols]);
-        //        }
-        //        builder.AppendLine();
-        //    }
-
-        //    return builder.ToString();
-        //}
+            return null;
+        }
 
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("  - - - - - -");
 
-            for (int i = 0; i < this.rows; i++)
+            for (int row = 0; row < this.tableRows; row++)
             {
-                for (int j = 0; j < this.cols; j++)
+                for (int col = 0; col < this.tableCols; col++)
                 {
-                    if (j == 0)
+                    if (col == 0)
                     {
-                        builder.AppendFormat("| {0,2} ", this[i, j]);
+                        builder.AppendFormat("| {0,2} ", this[row, col]);
                     }
-                    else if (j == 3)
+                    else if (col == 3)
                     {
-                        builder.AppendFormat("{0,2} |", this[i, j]);
+                        builder.AppendFormat("{0,2} |", this[row, col]);
                         builder.AppendLine();
                     }
                     else
                     {
-                        builder.AppendFormat("{0,2} ", this[i, j]);
+                        builder.AppendFormat("{0,2} ", this[row, col]);
                     }
                 }
             }
