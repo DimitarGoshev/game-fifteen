@@ -45,11 +45,11 @@
   <ItemGroup>
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameField.cs" />
-    <Compile Include="GameTest.cs" />
+    <Compile Include="ExecuteGame.cs" />
     <Compile Include="MoveDirection.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
-    <Compile Include="TopScores.cs" />
+    <Compile Include="TopScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
