@@ -49,7 +49,7 @@ namespace GameFifteen
             //}
 
             this.moveCount = 0;
-            // this.field.GenerateField();
+            this.field.GenerateField();
             this.isGameRunning = true;
 
             Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
