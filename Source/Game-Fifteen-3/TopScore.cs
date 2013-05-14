@@ -35,16 +35,19 @@ namespace GameFifteen
 
             if (TopPlayers.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Top score list is empty.");
+                Console.ResetColor();
             }
             else
             {
                 for (int i = 0; i < TopPlayers.Count; i++)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Name : {0}, Solved in : {1} moves!",
                     TopPlayers[i].Name,
                     TopPlayers[i].Score);
-
+                    Console.ResetColor();
                     if (countPlayers == ScoreListSize)
                     {
                         break;

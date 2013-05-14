@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameFifteen</name>
+    </assembly>
+    <members>
+        <member name="T:GameFifteen.GameEngine">
+            <summary>
+            Represents a class that includes methods that
+            initialize the state of the game, executes user commands
+            and shows the top scores of the players who have completed the game.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.GameEngine.StartGame">
+            <summary>
+            Represents a method which starts the game.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.GameEngine.CheckTopScore">
+            <summary>
+            Represents method that checks for a new
+            <seealso cref="!:Player.cs"/> high score.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.GameEngine.AddToTopScore(GameFifteen.Player,System.Int32)">
+            <summary>
+            Represents a method that add <seealso cref="!:Player.cs"/> score
+            to the list of <seealso cref="!:TopScores.cs"/>
+            </summary>
+            <param name="player">
+            An instance of <seealso cref="!:Player.cs"/> that 
+            will be used as information to be saved with the score.
+            </param>
+            <param name="position">
+            Position to be added to the List depending
+            on the score.
+            </param>
+        </member>
+        <member name="M:GameFifteen.GameEngine.IsGameFinished">
+            <summary>
+            Represents a method that checks if the game state is finished.
+            </summary>
+            <returns>
+            True or False depending on the finished 
+            state of the game.
+            </returns>
+        </member>
+        <member name="M:GameFifteen.GameEngine.ParseInput(System.String)">
+            <summary>
+            Represents a method that executes commands 
+            entered from the console depending on the user input.
+            </summary>
+            <param name="input">Console Input Commands</param>
+            <remarks>
+            Only commands like "exit", "top", "restart" or
+            number between [1, 15] is valid.
+            </remarks>
+        </member>
+        <member name="M:GameFifteen.GameEngine.MoveInDirection(GameFifteen.Position,GameFifteen.MoveDirection)">
+            <summary>
+            Represents a method that moves the number in the available <seealso cref="!:MoveDirection.cs"/>.
+            </summary>
+            <param name="oldPosition">The position that the number was originally set to.</param>
+            <param name="direction">The direction of the available movement.</param>
+        </member>
+        <member name="M:GameFifteen.GameEngine.TryMovingInDirection(System.Boolean@,GameFifteen.Position,GameFifteen.MoveDirection)">
+            <summary>
+            Represents a method that attempts to move the number in proper
+            <seealso cref="!:MoveDirecction.cs"/>
+            </summary>
+            <param name="isMoveValid">If the movement is valid.</param>
+            <param name="currentPosition">The current position of the number..</param>
+            <param name="direction">The direction to attempt to move to.</param>
+        </member>
+        <member name="M:GameFifteen.GameEngine.CanMoveInDirection(GameFifteen.Position,GameFifteen.MoveDirection)">
+            <summary>
+            Represents a method that validates the state of the number movement.
+            </summary>
+            <param name="currentPosition">The current position of the number..</param>
+            <param name="direction">The direction to attempt to move to.</param>
+            <returns>True or False depending if the number can be moved
+            in the given <seealso cref="!:MoveDirection.cs"/></returns>
+        </member>
+        <member name="M:GameFifteen.GameEngine.CalculatePositionWithDirection(GameFifteen.Position,GameFifteen.MoveDirection)">
+            <summary>
+            Represents a method that gives the moved number new
+            coordinates in the GameField
+            </summary>
+            <param name="position">The Old Position of the number.</param>
+            <param name="direction">The direction to move to.</param>
+            <returns>The new position of the number.</returns>
+        </member>
+        <member name="M:GameFifteen.GameEngine.RestartGame">
+            <summary>
+            Represents a method that starts a new game
+            </summary>
+            <remarks>The game field will have new numbers.</remarks>
+        </member>
+        <member name="M:GameFifteen.GameEngine.StopGame">
+            <summary>
+            Represents a method that stops the state of the game.
+            </summary>
+        </member>
+        <member name="T:GameFifteen.GameField">
+            <summary>
+            Represents a class that generates the game field 
+            that will be played on.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.GameField.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor of the game field.
+            </summary>
+            <param name="rows">Number of rows.</param>
+            <param name="cols">Number of columns.</param>
+        </member>
+        <member name="M:GameFifteen.GameField.GenerateField">
+            <summary>
+            Represents a method to generate a game field 
+            with random position of the numbers [1, 15] and
+            one empty cell where the movement of the numbers
+            will be held.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.GameField.GetPosition(System.String)">
+            <summary>
+            Represents a method to provide
+            read access to a number <seealso cref="!:Position.cs"/>
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameFifteen.GameField.ToString">
+            <summary>
+            Overrides the default toString
+            to provide table view of the game field.
+            </summary>
+            <returns>The modified string.</returns>
+        </member>
+        <member name="P:GameFifteen.GameField.Item(System.Int32,System.Int32)">
+            <summary>
+            Indexer to provide read/write access to the field.
+            </summary>
+        </member>
+        <member name="T:GameFifteen.ExecuteGame">
+            <summary>
+            Represents a class that 
+            starts the game.
+            </summary>
+        </member>
+        <member name="T:GameFifteen.MoveDirection">
+            <summary>
+            Represents enumaration which indicates
+            the available movement direction of a number
+            in the game field.
+            </summary>
+        </member>
+        <member name="T:GameFifteen.Player">
+            <summary>
+            Represents a class which provides 
+            information about the Player 
+            such as Name and Score.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.Player.#ctor(System.Int32)">
+            <param name="score">The Score of a player.</param>
+        </member>
+        <member name="M:GameFifteen.Player.#ctor(System.String,System.Int32)">
+            <param name="name">The name of the player.</param>
+            <param name="score">The score of the player.</param>
+        </member>
+        <member name="T:GameFifteen.Position">
+            <summary>
+            Represents a class which provides 
+            read/write information about Position 
+            of a given cell coordinates.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.Position.#ctor(System.Int32,System.Int32)">
+            <param name="row">Number of the row</param>
+            <param name="column">Number of the column.</param>
+        </member>
+        <member name="M:GameFifteen.Position.Clone">
+            <summary>
+            Provides a method that 
+            returns a value of the current position.
+            </summary>
+            <returns>The value of the current position.</returns>
+        </member>
+        <member name="T:GameFifteen.TopScore">
+            <summary>
+            Represents a class that provides information
+            by Score,
+            about Players who have finished the game successfully.
+            </summary>
+        </member>
+        <member name="M:GameFifteen.TopScore.AddPlayer(GameFifteen.Player,System.Int32)">
+            <summary>
+            Represents a method that 
+            adds a <seealso cref="!:Player.cs"/> name to the list of Top Scores.
+            </summary>
+            <param name="player">The player information that will be written to the lsit</param>
+            <param name="position">The position of the player to be added at.</param>
+        </member>
+        <member name="M:GameFifteen.TopScore.PrintTopScores">
+            <summary>
+            Represents a method that prints on the console
+            the list of Top Scores if it is not empty.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,5 +1,0 @@
-D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
-D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
-D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
-D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb

@@ -116,7 +116,7 @@ namespace GameFifteen
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine("  - - - - - -");
+            builder.AppendLine("***************");
 
             for (int row = 0; row < this.TableRows; row++)
             {
@@ -124,11 +124,11 @@ namespace GameFifteen
                 {
                     if (col == 0)
                     {
-                        builder.AppendFormat("| {0,2} ", this[row, col]);
+                        builder.AppendFormat("* {0,2} ", this[row, col]);
                     }
                     else if (col == 3)
                     {
-                        builder.AppendFormat("{0,2} |", this[row, col]);
+                        builder.AppendFormat("{0,2} *", this[row, col]);
                         builder.AppendLine();
                     }
                     else
@@ -138,7 +138,7 @@ namespace GameFifteen
                 }
             }
 
-            builder.AppendLine("  - - - - - -");
+            builder.AppendLine("***************\n\n");
             return builder.ToString();
         }
     }
