@@ -14,10 +14,10 @@ Game Fifteen is a sleek, interactive, logical and fun to play console applicatio
 
 <h2>Authors</h2>
 <h3>Team "Gold"</h3>
-Georgi Georgiev - https://github.com/gg3orgiev 
-Oleg Neofitov - https://github.com/neofitov
-Dimitur Goshev - https://github.com/DimitarGoshev
-Georgi Yolovski - https://github.com/BlueForeverI
+<p>Georgi Georgiev - https://github.com/gg3orgiev</p>
+<p>Oleg Neofitov - https://github.com/neofitov</p>
+<p>Dimitur Goshev - https://github.com/DimitarGoshev</p>
+<p>Georgi Yolovski - https://github.com/BlueForeverI</p>
 
 <h2>Bug tracker</h2>
 If you have a bug to report or want to request a new feature please open
