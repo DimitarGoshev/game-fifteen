@@ -8,7 +8,7 @@ Game-Fifteen-3 | Quality Programming Code | Teamwork Project | Telerik Software 
 Game Fifteen is a sleek, interactive, logical and fun to play console application game.
 
 <h2>Quick Start</h2>
-1. <a href = "#">Download the latest release</a>
+1. <a href = "https://github.com/gg3orgiev/game-fifteen/raw/master/Game-Fifteen-3/bin/Debug/GameFifteen.exe">Download the latest release</a>
 2. Run the executable file.
 3. Enjoy the game.
 
