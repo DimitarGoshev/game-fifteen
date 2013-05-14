@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameField.cs" />
-    <Compile Include="GameFifteen.cs" />
     <Compile Include="GameTest.cs" />
     <Compile Include="MoveDirection.cs" />
     <Compile Include="Player.cs" />
