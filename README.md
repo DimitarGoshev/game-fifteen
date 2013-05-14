@@ -1,7 +1,6 @@
 <h1>Game Fifteen<h1>
-<i>
-Game-Fifteen-3 | Quality Programming Code | Teamwork Project | Telerik Software Academy
-</i>
+
+<address>Quality Programming Code | Teamwork Project | Telerik Software Academy</address>
 
 
 <h2>Game Fifteen v.1.3</h2>
