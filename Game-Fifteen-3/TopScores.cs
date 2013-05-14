@@ -10,7 +10,7 @@ namespace GameFifteen
        // this is the top score table
        public static Player[] TopPlayers = new Player[TopScoresSize];
 
-       private void PrintTopScores()
+       public static void PrintTopScores()
        {
            for (int i = 0; i < TopScores.TopScoresSize; i++)
            {

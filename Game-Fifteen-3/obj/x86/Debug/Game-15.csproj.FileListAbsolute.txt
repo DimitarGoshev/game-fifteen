@@ -16,3 +16,8 @@ C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pd
 C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
 C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
 C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
+D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
+D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
+D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
+D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
+D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache

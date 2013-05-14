@@ -84,7 +84,7 @@ namespace GameFifteen
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("  - - - - - -");
+            builder.AppendLine("  - - - - - -");
 
             for (int i = 0; i < this.rows; i++)
             {
@@ -106,7 +106,7 @@ namespace GameFifteen
                 }
             }
 
-            builder.Append("  - - - - - -");
+            builder.AppendLine("  - - - - - -");
             return builder.ToString();
         }
     }

@@ -7,7 +7,7 @@ namespace GameFifteen
     {
         public static void Main(string[] args)
         {
-            GameFifteen game = new GameFifteen();
+            GameEngine game = new GameEngine();
             game.StartGame();
         }
     }
