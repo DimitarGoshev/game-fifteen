@@ -1,28 +1,5 @@
-E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
-E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
-E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
-E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
-E:\Telerik\HQCode\PROJECT\game-fifteen-master\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-E:\Telerik\HQCode\PROJECT\game-fifteen-master\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
-E:\Telerik\HQCode\PROJECT\game-fifteen-master\Game-Fifteen-3\bin\Debug\GameFifteen.exe
-E:\Telerik\HQCode\PROJECT\game-fifteen-master\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
-E:\Telerik\HQCode\PROJECT\game-fifteen-master\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
-=======
->>>>>>> d89775755846ff86fdeec24da24512ef49fe1038
-C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
-C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
-C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
-C:\Users\Georgi\Desktop\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
-D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
 D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
 D:\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
 D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
-C:\Users\Oleg\Documents\GitHub\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
-C:\Users\Oleg\Documents\GitHub\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
-C:\Users\Oleg\Documents\GitHub\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.exe
-C:\Users\Oleg\Documents\GitHub\game-fifteen\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
-C:\Users\Oleg\Documents\GitHub\game-fifteen\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
+D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
+D:\game-fifteen\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
