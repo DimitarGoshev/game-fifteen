@@ -7,47 +7,48 @@ namespace GameFifteen
     public class GameFifteen
     {
         private const int BoardSize = 4;
-        private string[,] matrix;
+        //private string[,] matrix;
+        private GameField field;
         private const string EmptyCell = " ";
         private int moveCount;
 
-        private void GenerateMatrix()
-        {
-            Random random = new Random();
-            List<int> usedNumbers = new List<int>();
-            bool isFilled = false;
-            int row = random.Next(BoardSize);
-            int col = random.Next(BoardSize);
-            this.matrix[row, col] = EmptyCell;
+        //private void GenerateMatrix()
+        //{
+        //    Random random = new Random();
+        //    List<int> usedNumbers = new List<int>();
+        //    bool isFilled = false;
+        //    int row = random.Next(BoardSize);
+        //    int col = random.Next(BoardSize);
+        //    this.matrix[row, col] = EmptyCell;
 
-            for (int i = 0; i < BoardSize; i++)
-            {
-                for (int j = 0; j < BoardSize; j++)
-                {
-                    isFilled = false;
+        //    for (int i = 0; i < BoardSize; i++)
+        //    {
+        //        for (int j = 0; j < BoardSize; j++)
+        //        {
+        //            isFilled = false;
 
-                    do
-                    {
-                        if (this.matrix[i, j] == EmptyCell)
-                        {
-                            isFilled = true;
-                        }
+        //            do
+        //            {
+        //                if (this.matrix[i, j] == EmptyCell)
+        //                {
+        //                    isFilled = true;
+        //                }
 
-                        int number = random.Next(1, 16);
-                        if (this.matrix[i, j] == null)
-                        {
-                            if (!usedNumbers.Contains(number))
-                            {
-                                this.matrix[i, j] = number.ToString();
-                                isFilled = true;
-                                usedNumbers.Add(number);
-                            }
-                        }
-                    }
-                    while (isFilled == false);
-                }
-            }
-        }
+        //                int number = random.Next(1, 16);
+        //                if (this.matrix[i, j] == null)
+        //                {
+        //                    if (!usedNumbers.Contains(number))
+        //                    {
+        //                        this.matrix[i, j] = number.ToString();
+        //                        isFilled = true;
+        //                        usedNumbers.Add(number);
+        //                    }
+        //                }
+        //            }
+        //            while (isFilled == false);
+        //        }
+        //    }
+        //}
 
         private void DrawMatrix()
         {
