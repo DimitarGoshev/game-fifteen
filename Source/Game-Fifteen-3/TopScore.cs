@@ -48,6 +48,7 @@ namespace GameFifteen
                     TopPlayers[i].Name,
                     TopPlayers[i].Score);
                     Console.ResetColor();
+
                     if (countPlayers == ScoreListSize)
                     {
                         break;

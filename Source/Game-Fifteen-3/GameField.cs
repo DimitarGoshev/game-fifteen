@@ -17,6 +17,7 @@ namespace GameFifteen
     /// </summary>
     class GameField
     {
+        // TODO - use Position for indexing.
         private readonly int TableRows;
         private readonly int TableCols;
         private readonly string[,] Table;
@@ -116,7 +117,7 @@ namespace GameFifteen
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine("***************");
+            builder.AppendLine("* * * * * * * *");
 
             for (int row = 0; row < this.TableRows; row++)
             {
@@ -138,7 +139,7 @@ namespace GameFifteen
                 }
             }
 
-            builder.AppendLine("***************\n\n");
+            builder.AppendLine("* * * * * * * *\n\n");
             return builder.ToString();
         }
     }

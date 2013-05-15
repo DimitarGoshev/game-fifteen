@@ -31,5 +31,7 @@ namespace GameFifteen
         {
             return new Position(this.Row, this.Column);
         }
+
+        // TODO - Override equality operators.
     }
 }

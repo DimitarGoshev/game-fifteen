@@ -59,13 +59,15 @@ namespace GameFifteen
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(field.ToString());
 
-            // while the game is running prompts the user to enter
+            // While the game is running prompts the user to enter
             // new position to move to.
             while (isGameRunning)
             {
-                Console.ForegroundColor = ConsoleColor.White;
                 isGameRunning = !IsGameFinished();
+                
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("Enter a number to move [1..15]: ");
+                
                 string input = Console.ReadLine();
                 this.ParseInput(input);
 
@@ -135,6 +137,7 @@ namespace GameFifteen
             Console.WriteLine("Congratulations, you have just set a new record!");
             Console.Write("Please enter your name : ");
             Console.ResetColor();
+
             player.Name = Console.ReadLine();
             TopScore.AddPlayer(player, position);
         }
@@ -148,16 +151,17 @@ namespace GameFifteen
         /// </returns>
         private bool IsGameFinished()
         {
-            // counter indicates the proper order of the numbers
-            int counter = 1;
+            // TODO - rewrite this method using Position.
+            // Indicates the proper order of the numbers
+            int countElements = 1;
 
             for (int row = 0; row < BOARD_SIZE; row++)
             {
                 for (int col = 0; col < BOARD_SIZE; col++)
                 {
-                    if (this.field[row, col] != counter.ToString())
+                    if (this.field[row, col] != countElements.ToString())
                     {
-                        if (counter == 15 && this.field[row, col] == EmptyCell)
+                        if (countElements == 15 && this.field[row, col] == EmptyCell)
                         {
                             isGameWon = true;
                             return true;
@@ -168,7 +172,7 @@ namespace GameFifteen
                         }
                     }
 
-                    counter++;
+                    countElements++;
                 }
             }
 
@@ -191,6 +195,7 @@ namespace GameFifteen
             if (input == "exit")
             {
                 this.StopGame();
+                return;
             }
 
             if (input == "restart")
@@ -346,13 +351,15 @@ namespace GameFifteen
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game restarted. Generating new table...");
+
+            this.moveCount = 0;
             this.field = new GameField(BOARD_SIZE, BOARD_SIZE);
             field.GenerateField();
+
             Console.WriteLine("Done!");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(field.ToString());
             Console.ResetColor();
-            this.moveCount = 0;
         }
 
         /// <summary>
@@ -380,6 +387,7 @@ namespace GameFifteen
                     this.isGameWon = false;
                 }
             }
+
             this.isGameRunning = false;
             Console.ResetColor();
         }
