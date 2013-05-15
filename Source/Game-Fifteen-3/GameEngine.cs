@@ -368,14 +368,14 @@ namespace GameFifteen
                 Console.Write("Start Another Game? (Y/N): ");
                 string userInput = Console.ReadLine();
 
-                if (userInput.Equals("Y"))
+                if (userInput.Equals("Y", StringComparison.OrdinalIgnoreCase))
                 {
                     this.RestartGame();
                     this.isGameRunning = true;
                     this.isGameWon = false;
                     return;
                 }
-                else if (userInput.Equals("N"))
+                else if (userInput.Equals("N", StringComparison.OrdinalIgnoreCase))
                 {
                     this.isGameWon = false;
                 }
