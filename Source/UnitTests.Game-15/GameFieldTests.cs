@@ -42,6 +42,7 @@ namespace UnitTests.Game_15
         {
             GameField field = new GameField(4, 4);
             field.GenerateField();
+			
             string numberToAssign = "5";
             int row = 2;
             int col = 2;
