@@ -10,8 +10,8 @@ namespace GameFifteen
     public class Position : ICloneable
     {
 
-        /// <param name="row">Number of the row</param>
-        /// <param name="column">Number of the column.</param>
+        /// <param name="rows">Number of the rows</param>
+        /// <param name="columns">Number of the columns.</param>
         public Position(int row, int column)
         {
             this.Row = row;

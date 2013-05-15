@@ -31,18 +31,18 @@ namespace GameFifteen
 
             // Test TopScore
             //int cnt = 1;
-            //for (int row = 0; row < 4; row++)
+            //for (int rows = 0; rows < 4; rows++)
             //{
             //    for (int col = 0; col < 4; col++)
             //    {
             //        if (cnt != 16)
             //        {
-            //            field[row, col] = cnt + "";
+            //            field[rows, col] = cnt + "";
 
             //        }
             //        else
             //        {
-            //            field[row, col] = " ";
+            //            field[rows, col] = " ";
             //        }
             //        cnt++;
             //    }

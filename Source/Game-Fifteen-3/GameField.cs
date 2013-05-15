@@ -15,7 +15,7 @@ namespace GameFifteen
     /// Represents a class that generates the game field 
     /// that will be played on.
     /// </summary>
-    class GameField
+    public class GameField
     {
         // TODO - use Position for indexing.
         private readonly int TableRows;
@@ -40,8 +40,64 @@ namespace GameFifteen
         /// </summary>
         public string this[int rows, int cols]
         {
-            get { return Table[rows, cols]; }
-            set { Table[rows, cols] = value; }
+            get 
+            {
+                if (!IsRowIndexInRange(rows))
+                {
+                    throw new ArgumentOutOfRangeException("rows", "The row index is out of range");
+                }
+
+                if (!IsColumnIndexInRange(cols))
+                {
+                    throw new ArgumentOutOfRangeException("cols", "The column index is out of range");
+                }
+
+                return Table[rows, cols];
+            }
+            set 
+            {
+                if (!IsRowIndexInRange(rows))
+                {
+                    throw new ArgumentOutOfRangeException("rows", "The row index is out of range");
+                }
+
+                if (!IsColumnIndexInRange(cols))
+                {
+                    throw new ArgumentOutOfRangeException("cols", "The column index is out of range");
+                }
+
+                Table[rows, cols] = value; 
+            }
+        }
+
+        /// <summary>
+        /// Checks wheter the specified row is in the game field
+        /// </summary>
+        /// <param name="rows">Row idex to check</param>
+        /// <returns>True is it is in the field, false otherwise</returns>
+        private bool IsRowIndexInRange(int rows)
+        {
+            if (rows < 0 || rows >= this.TableRows)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checks wheter the specified column is in the game field
+        /// </summary>
+        /// <param name="rows">Column idex to check</param>
+        /// <returns>True is it is in the field, false otherwise</returns>
+        private bool IsColumnIndexInRange(int columns)
+        {
+            if (columns < 0 || columns >= this.TableCols)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

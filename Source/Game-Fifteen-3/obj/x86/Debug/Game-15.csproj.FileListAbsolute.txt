@@ -9,3 +9,9 @@ D:\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.XML
 D:\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.exe
 D:\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
 D:\game-fifteen\Source\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.XML
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\obj\x86\Debug\GameFifteen.exe
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\obj\x86\Debug\GameFifteen.pdb
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.exe
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\bin\Debug\GameFifteen.pdb
+E:\Documents\Telerik-Software-Academy\High-Quality Code\Homework\Teamwork\game-fifteen\Source\Game-Fifteen-3\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
