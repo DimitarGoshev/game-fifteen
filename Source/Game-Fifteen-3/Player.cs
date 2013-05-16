@@ -17,13 +17,13 @@ namespace GameFifteen
     /// </summary>
     public class Player
     {
-
+        private string name;
+        private int score;
         /// <param name="score">The Score of a player.</param>
         public Player(int score)
         {
             this.Score = score;
         }
-
 
         /// <param name="name">The name of the player.</param>
         /// <param name="score">The score of the player.</param>
@@ -33,8 +33,39 @@ namespace GameFifteen
             this.Name = name;
         }
 
-        public string Name { get; set; }
+        public string Name 
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("The name cannot be empty string");
+                }
 
-        public int Score { get; set; }
+                this.name = value;
+            }
+        }
+
+        public int Score 
+        {
+            get
+            {
+                return this.score;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("score",
+                        "The score should be a positive number");
+                }
+
+                this.score = value;
+            }
+        }
     }
 }
