@@ -49,7 +49,7 @@ namespace GameFifteen
             //}
 
             this.moveCount = 0;
-            this.field.GenerateField();
+            this.field.GenerateField(new RandomFieldGenerator());
             this.isGameRunning = true;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
@@ -354,7 +354,7 @@ namespace GameFifteen
 
             this.moveCount = 0;
             this.field = new GameField(BOARD_SIZE, BOARD_SIZE);
-            field.GenerateField();
+            field.GenerateField(new RandomFieldGenerator());
 
             Console.WriteLine("Done!");
             Console.ForegroundColor = ConsoleColor.Yellow;

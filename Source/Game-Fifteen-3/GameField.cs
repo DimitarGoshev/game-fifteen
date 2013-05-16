@@ -20,7 +20,7 @@ namespace GameFifteen
         // TODO - use Position for indexing.
         private readonly int TableRows;
         private readonly int TableCols;
-        private readonly string[,] Table;
+        private string[,] table;
         private const string EMPTY_CELL = " ";
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace GameFifteen
         /// <param name="cols">Number of columns.</param>
         public GameField(int rows, int cols)
         {
-            Table = new string[rows, cols];
+            table = new string[rows, cols];
             this.TableRows = rows;
             this.TableCols = cols;
         }
@@ -52,7 +52,7 @@ namespace GameFifteen
                     throw new ArgumentOutOfRangeException("cols", "The column index is out of range");
                 }
 
-                return Table[rows, cols];
+                return table[rows, cols];
             }
             set
             {
@@ -66,7 +66,7 @@ namespace GameFifteen
                     throw new ArgumentOutOfRangeException("cols", "The column index is out of range");
                 }
 
-                Table[rows, cols] = value;
+                table[rows, cols] = value;
             }
         }
 
@@ -106,41 +106,9 @@ namespace GameFifteen
         /// one empty cell where the movement of the numbers
         /// will be held.
         /// </summary>
-        public void GenerateField()
+        public void GenerateField(IFieldGenerator fieldGenerator)
         {
-            Random randomNumbers = new Random();
-            List<int> usedNumbers = new List<int>();
-            bool isTableFilled = false;
-            int randomRow = randomNumbers.Next(TableRows);
-            int randomCol = randomNumbers.Next(TableCols);
-            this[randomRow, randomCol] = EMPTY_CELL;
-
-            for (int row = 0; row < TableRows; row++)
-            {
-                for (int col = 0; col < TableCols; col++)
-                {
-                    isTableFilled = false;
-                    do
-                    {
-                        if (this[row, col] == EMPTY_CELL)
-                        {
-                            isTableFilled = true;
-                        }
-
-                        int number = randomNumbers.Next(1, 16);
-                        if (this[row, col] == null)
-                        {
-                            if (!usedNumbers.Contains(number))
-                            {
-                                this[row, col] = number.ToString();
-                                isTableFilled = true;
-                                usedNumbers.Add(number);
-                            }
-                        }
-                    }
-                    while (isTableFilled == false);
-                }
-            }
+            this.table = fieldGenerator.GenerateField(this.TableRows, this.TableCols);
         }
 
         /// <summary>

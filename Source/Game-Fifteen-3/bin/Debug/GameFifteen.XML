@@ -128,7 +128,7 @@
             <param name="rows">Column idex to check</param>
             <returns>True is it is in the field, false otherwise</returns>
         </member>
-        <member name="M:GameFifteen.GameField.GenerateField">
+        <member name="M:GameFifteen.GameField.GenerateField(GameFifteen.IFieldGenerator)">
             <summary>
             Represents a method to generate a game field 
             with random position of the numbers [1, 15] and

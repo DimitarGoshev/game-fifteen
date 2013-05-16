@@ -2,6 +2,7 @@
 using GameFifteen;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
 
 namespace UnitTests.Game_15
 {
@@ -13,7 +14,7 @@ namespace UnitTests.Game_15
         {
             const int FIELD_SIZE = 4;
             GameField field = new GameField(FIELD_SIZE, FIELD_SIZE);
-            field.GenerateField();
+            field.GenerateField(new RandomFieldGenerator());
             var existingNumbers = new List<string>();
             bool isFieldValid = true;
 
@@ -41,7 +42,7 @@ namespace UnitTests.Game_15
         public void Indexer_NormalCase()
         {
             GameField field = new GameField(4, 4);
-            field.GenerateField();
+            field.GenerateField(new RandomFieldGenerator());
 			
             string numberToAssign = "5";
             int row = 2;
@@ -56,7 +57,7 @@ namespace UnitTests.Game_15
         public void Indexer_RowsOutOfRange()
         {
             GameField field = new GameField(4, 4);
-            field.GenerateField();
+            field.GenerateField(new RandomFieldGenerator());
             field[-1, 0] = "5";
         }
 
@@ -65,8 +66,25 @@ namespace UnitTests.Game_15
         public void Indexer_ColsOutOfRange()
         {
             GameField field = new GameField(4, 4);
-            field.GenerateField();
+            field.GenerateField(new RandomFieldGenerator());
             field[1, 5] = "5";
+        }
+
+        [TestMethod]
+        public void ToString_GeneralCase()
+        {
+            GameField field = new GameField(4, 4);
+            field.GenerateField(new StubFieldGenerator());
+
+            StringBuilder expected = new StringBuilder();
+            expected.AppendLine("* * * * * * * *");
+            expected.AppendLine("*  1  2  3  4 *");
+            expected.AppendLine("*  5  6  7  8 *");
+            expected.AppendLine("*  9 10 11 12 *");
+            expected.AppendLine("* 13 14 15    *");
+            expected.AppendLine("* * * * * * * *\n\n");
+
+            Assert.AreEqual(expected.ToString(), field.ToString());
         }
     }
 }

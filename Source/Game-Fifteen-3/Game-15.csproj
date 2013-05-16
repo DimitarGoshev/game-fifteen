@@ -47,9 +47,11 @@
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameField.cs" />
     <Compile Include="ExecuteGame.cs" />
+    <Compile Include="IFieldGenerator.cs" />
     <Compile Include="MoveDirection.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
+    <Compile Include="RandomFieldGenerator.cs" />
     <Compile Include="TopScore.cs" />
   </ItemGroup>
   <ItemGroup>

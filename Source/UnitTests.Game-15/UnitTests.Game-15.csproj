@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="GameFieldTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StubFieldGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Game-Fifteen-3\Game-15.csproj">
