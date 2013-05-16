@@ -114,6 +114,20 @@
             <param name="rows">Number of rows.</param>
             <param name="cols">Number of columns.</param>
         </member>
+        <member name="M:GameFifteen.GameField.IsRowIndexInRange(System.Int32)">
+            <summary>
+            Checks wheter the specified row is in the game field
+            </summary>
+            <param name="rows">Row idex to check</param>
+            <returns>True is it is in the field, false otherwise</returns>
+        </member>
+        <member name="M:GameFifteen.GameField.IsColumnIndexInRange(System.Int32)">
+            <summary>
+            Checks wheter the specified column is in the game field
+            </summary>
+            <param name="rows">Column idex to check</param>
+            <returns>True is it is in the field, false otherwise</returns>
+        </member>
         <member name="M:GameFifteen.GameField.GenerateField">
             <summary>
             Represents a method to generate a game field 
