@@ -2,6 +2,9 @@
 
 namespace GameFifteen
 {
+    /// <summary>
+    /// Represents a class for storing user messages.
+    /// </summary>
     class Message
     {
         public const string WELCOME = "Welcome to the Game \"15\".\n"

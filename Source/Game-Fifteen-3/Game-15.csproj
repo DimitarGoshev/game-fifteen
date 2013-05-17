@@ -50,7 +50,7 @@
     <Compile Include="IFieldGenerator.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MoveDirection.cs" />
-    <Compile Include="Moving.cs" />
+    <Compile Include="Movement.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="RandomFieldGenerator.cs" />
