@@ -1,4 +1,11 @@
-﻿using System;
+﻿// **************************
+//
+//  Written by Team "Gold"
+//  Copyright (c) 2012-2013, Telerik Academy
+//
+// **************************
+
+using System;
 
 namespace GameFifteen
 {

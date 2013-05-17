@@ -1,10 +1,28 @@
-﻿using System;
+﻿// **************************
+//
+//  Written by Team "Gold"
+//  Copyright (c) 2012-2013, Telerik Academy
+//
+// **************************
+
+using System;
 using System.Collections.Generic;
 
 namespace GameFifteen
 {
+    /// <summary>
+    /// Represents class  that generates
+    /// game field
+    /// </summary>
     public class RandomFieldGenerator : IFieldGenerator
     {
+        /// <summary>
+        /// Method that creates game field with random numbs
+        /// depending on the size
+        /// </summary>
+        /// <param name="rows">The row size</param>
+        /// <param name="cols">The columns size</param>
+        /// <returns>Returns the new generated field as array</returns>
         public string[,] GenerateField(int rows, int cols)
         {
             string[,] table = new string[rows, cols];
