@@ -36,7 +36,7 @@ namespace GameFifteen
             if (TopPlayers.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Top score list is empty.");
+                Console.WriteLine(Message.EMPTY_TOP_SCORE);
                 Console.ResetColor();
             }
             else

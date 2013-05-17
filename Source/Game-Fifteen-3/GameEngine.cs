@@ -16,7 +16,6 @@ namespace GameFifteen
     public class GameEngine
     {
         private GameField field;
-        private const string EmptyCell = " ";
         private int moveCount;
         private const int BOARD_SIZE = 4;
         private bool isGameRunning = false;
@@ -29,33 +28,11 @@ namespace GameFifteen
         {
             this.field = new GameField(BOARD_SIZE, BOARD_SIZE);
 
-            // Test TopScore
-            //int cnt = 1;
-            //for (int row = 0; row < 4; row++)
-            //{
-            //    for (int col = 0; col < 4; col++)
-            //    {
-            //        if (cnt != 16)
-            //        {
-            //            field[row, col] = cnt + "";
-
-            //        }
-            //        else
-            //        {
-            //            field[row, col] = " ";
-            //        }
-            //        cnt++;
-            //    }
-            //}
-
             this.moveCount = 0;
             this.field.GenerateField(new RandomFieldGenerator());
             this.isGameRunning = true;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Welcome to the game \"15\". Please try to arrange the numbers " +
-                "sequentially .\nUse 'top' to view the top scoreboard, 'restart' to start a new " +
-                "game and 'exit' \nto quit the game.\n\n\n");
-
+            Console.WriteLine(Message.WELCOME);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(field.ToString());
 
@@ -66,7 +43,7 @@ namespace GameFifteen
                 isGameRunning = !IsGameFinished();
                 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Enter a number to move [1..15]: ");
+                Console.Write(Message.MOVE);
                 
                 string input = Console.ReadLine();
                 this.ParseInput(input);
@@ -74,7 +51,7 @@ namespace GameFifteen
                 if (isGameWon)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("You solved the game in {0} moves!", this.moveCount);
+                    Console.WriteLine(Message.Solved(this.moveCount));
                     this.CheckTopScore();
                     this.StopGame();
                 }
@@ -134,8 +111,7 @@ namespace GameFifteen
         private void AddToTopScore(Player player, int position)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Congratulations, you have just set a new record!");
-            Console.Write("Please enter your name : ");
+            Console.WriteLine(Message.CONGRATS);
             Console.ResetColor();
 
             player.Name = Console.ReadLine();
@@ -161,7 +137,7 @@ namespace GameFifteen
                 {
                     if (this.field[row, col] != countElements.ToString())
                     {
-                        if (countElements == 15 && this.field[row, col] == EmptyCell)
+                        if (countElements == 15 && this.field[row, col] == GameField.EMPTY_CELL)
                         {
                             isGameWon = true;
                             return true;
@@ -192,19 +168,19 @@ namespace GameFifteen
         {
             bool isMoveValid = false;
 
-            if (input == "exit")
+            if (input == Message.EXIT)
             {
                 this.StopGame();
                 return;
             }
 
-            if (input == "restart")
+            if (input == Message.RESTART)
             {
                 this.RestartGame();
                 return;
             }
 
-            if (input == "top")
+            if (input == Message.TOP)
             {
                 TopScore.PrintTopScores();
                 return;
@@ -226,7 +202,7 @@ namespace GameFifteen
             if (!isMoveValid)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("That number can't be moved!");
+                Console.WriteLine(Message.INVALID_MOVE);
                 Console.ResetColor();
             }
         }
@@ -241,11 +217,11 @@ namespace GameFifteen
             Position newPosition = this.CalculatePositionWithDirection(oldPosition,
                 direction);
 
-            if (this.field[newPosition.Row, newPosition.Column] == EmptyCell)
+            if (this.field[newPosition.Row, newPosition.Column] == GameField.EMPTY_CELL)
             {
                 string itemToMove = this.field[oldPosition.Row, oldPosition.Column];
                 this.field[newPosition.Row, newPosition.Column] = itemToMove;
-                this.field[oldPosition.Row, oldPosition.Column] = EmptyCell;
+                this.field[oldPosition.Row, oldPosition.Column] = GameField.EMPTY_CELL;
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(this.field.ToString());
                 Console.ResetColor();
@@ -304,7 +280,7 @@ namespace GameFifteen
 
             Position newPosition = this.CalculatePositionWithDirection(position, direction);
 
-            if (this.field[newPosition.Row, newPosition.Column] != EmptyCell)
+            if (this.field[newPosition.Row, newPosition.Column] != GameField.EMPTY_CELL)
             {
                 return false;
             }
@@ -350,13 +326,12 @@ namespace GameFifteen
         private void RestartGame()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Game restarted. Generating new table...");
+            Console.WriteLine(Message.GAME_RESTARTED);
 
             this.moveCount = 0;
             this.field = new GameField(BOARD_SIZE, BOARD_SIZE);
             field.GenerateField(new RandomFieldGenerator());
 
-            Console.WriteLine("Done!");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(field.ToString());
             Console.ResetColor();
@@ -368,21 +343,21 @@ namespace GameFifteen
         private void StopGame()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Game Over!");
+            Console.WriteLine(Message.GAME_OVER);
 
             while (isGameWon)
             {
-                Console.Write("Start Another Game? (Y/N): ");
+                Console.Write(Message.NEW_GAME);
                 string userInput = Console.ReadLine();
 
-                if (userInput.Equals("Y", StringComparison.OrdinalIgnoreCase))
+                if (userInput.Equals(Message.CONFIRM, StringComparison.OrdinalIgnoreCase))
                 {
                     this.RestartGame();
                     this.isGameRunning = true;
                     this.isGameWon = false;
                     return;
                 }
-                else if (userInput.Equals("N", StringComparison.OrdinalIgnoreCase))
+                else if (userInput.Equals(Message.DENY, StringComparison.OrdinalIgnoreCase))
                 {
                     this.isGameWon = false;
                 }

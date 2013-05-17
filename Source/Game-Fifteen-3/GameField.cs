@@ -21,7 +21,7 @@ namespace GameFifteen
         private readonly int TableRows;
         private readonly int TableCols;
         private string[,] table;
-        private const string EMPTY_CELL = " ";
+        public const string EMPTY_CELL = " ";
 
         /// <summary>
         /// Constructor of the game field.
